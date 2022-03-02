@@ -1,0 +1,40 @@
+using System.IO;
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello, World!");
+        Acc a=new Acc();
+        a.empid=10;
+        Console.WriteLine("ID="+a.empid);
+        Acd b=new Acd();
+        b.empid=12
+        Console.WriteLine("new id"+b.empid);
+    }
+}
+??Asymmetric Accesor
+class Acc{
+    private int id=11;
+    public int empid{
+        private set{
+            id=value;
+        }
+        get{
+            return id;
+        }
+    }
+}
+??Symmetric Accesor
+class Acd{
+     private int id;
+     public int empid{
+          set{
+              id=value;
+          }
+          get{
+              return id;
+          }
+     }
+}
