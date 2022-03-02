@@ -1,0 +1,70 @@
+The System.Object class is the Superclass of all dot net types.
+===============================================================
+
+
+Every data type in .NET inherits the ToString() method from the Object class.
+=============================================================================
+public class Program
+    {
+        public static void Main()
+        {
+            int Number = 100;
+            Console.WriteLine(Number.ToString());
+        }
+    }
+==============================================================================
+Number.ToString() method gives you the string representation of the integer 100
+
+BUT If you have a complex type when you call the ToString() method, then you will not get 
+  the output as expected. Hence we have to override the ToString() method, 
+  which is inherited from the Object class.
+==========================================================================================
+using System.IO;
+using System;
+
+
+public class Program
+{
+    public static void Main()
+    {
+        Employee emp = new Employee();
+        emp.FirstName = "Pranaya";
+        emp.LastName = "Rout";
+        Console.WriteLine(emp.ToString());
+        Console.ReadKey();
+    }
+}
+public class Employee
+{
+    public string FirstName;
+    public string LastName;
+}
+==============================
+output: Employee
+==============================
+using System.IO;
+using System;
+
+
+public class Program
+{
+    public static void Main()
+    {
+        Employee emp = new Employee();
+        emp.FirstName = "Bishal";
+        emp.LastName = "Halder";
+        Console.WriteLine(emp.ToString());
+        Console.ReadKey();
+    }
+}
+public class Employee
+{
+    public string FirstName;
+    public string LastName;
+    public override string ToString(){
+        return FirstName+" "+LastName;
+    }
+}
+===============================
+output: Bishal Halder
+===============================
