@@ -1,0 +1,83 @@
+Event Registration
+As an event planner, you may find yourself with a request for a Letter of Invitation from a potential participant from overseas. While you’ll probably be excited that your event has generated such worldwide interest, you need to be aware that such requests can mask fraudulent registrations. 
+
+Write a program to read a list of valid email address and store it in a set. Read a comma seperated email address( email address through which the requestes are sent)  which need to be searched in the existing Set and display whether all those email address are found in the Set. Letter of Invitation will be sent only for those email address existing in the set.
+
+Create a Program class.
+Read the inputs from the user.
+Then store the data in a set, search for the email ids and display the result as shown in the sample input and output.
+
+Input Format:
+First input is an integer "n" that corresponds to the number of email ids.
+Second Input is a string array that corresponds to the email id.
+Third input is a string that corresponds to the list of email ids seperated using comma.
+
+Output Format:
+Output should display the email ids that are not found.
+If all the email ids are found, "All the email ids are found" is displayed.
+All text in bold corresponds to the input and rest corresponds to the output.
+
+Sample Input and Output 1 :
+4
+daniel@gmail.com
+smith@gmail.com
+john@gmail.com
+albert@gmail.com
+Enter the email id to search
+albert@gmail.com,smith@gmail.com,daniel@gmail.com
+All the email ids are found
+
+Sample Input and Output 2 :
+5
+smith@gmail.com
+gabriel@gmail.com
+albert@gmail.com
+william@gmail.com
+john@gmail.com
+Enter the email id to search
+daniel@gmail.com,abraham@gmail.com,cassandra@gmail.com
+daniel@gmail.com not found
+abraham@gmail.com not found
+cassandra@gmail.com not found
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CSHARP:
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        //fill code here
+        List<string> l=new List<string>();
+        HashSet<string> r=new HashSet<string>();
+        int n=Convert.ToInt32(Console.ReadLine());
+        for(int i=0;i<n;i++){
+            l.Add(Console.ReadLine());
+        }
+        Console.WriteLine("Enter the email id to search");
+        string str=Console.ReadLine();
+        string[] s= str.Split(",");
+        int c=0;
+        bool ff=false;
+        for(int i=0;i<s.Length;i++){
+            bool f=true;
+            foreach(string v in l){
+                if(string.Equals(s[i],v)){
+                    c++;
+                    f=false;
+                    break;
+                }
+            }
+            if(f){
+                Console.WriteLine("{0} not found",s[i]);
+                ff=true;
+            }
+        }
+        if(!ff){
+            Console.WriteLine("All the email ids are found");
+        }
+    }
+}
